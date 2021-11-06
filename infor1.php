@@ -237,10 +237,8 @@
                 <!-- store products -->
                 <div class="row">
                     <?php
-					if (isset($_GET['keyword'])) {
-						$keyword = $_GET['keyword'];
-						$getProductSearch = $product->getProductSearch($keyword);
-						foreach ($getProductSearch as $value) {
+                    $getAllProductsLap = $product -> getAllProductsLap();
+					foreach ($getAllProductsLap as $value) {
 					?>
                     <!-- product -->
                     <div class="col-md-4 col-xs-6">
@@ -275,7 +273,6 @@
                     </div>
                     <!-- /product -->
                     <?php
-						}
 					}
 					?>
                 </div>

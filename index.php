@@ -5,45 +5,84 @@
 			<div class="container">
 				<!-- row -->
 				<div class="row">
+
+				    <!-- shop -->
+					<div class="col-md-1 col-xs-6">
+					</div>
+					<!-- /shop -->
+
 					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
+					<div class="col-md-2 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop01.png" alt="">
+								<img src="./img/shoppingpng.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Laptop<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>Điện Thoại<br>Collection</h3>
+								<a href="infor.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
 					<!-- /shop -->
 
 					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
+					<div class="col-md-2 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop03.png" alt="">
+								<img src="./img/81ack-3BIlL-768x768.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Accessories<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>LapTop<br>Collection</h3>
+								<a href="infor1.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
 					<!-- /shop -->
 
 					<!-- shop -->
-					<div class="col-md-4 col-xs-6">
+					<div class="col-md-2 col-xs-6">
 						<div class="shop">
 							<div class="shop-img">
-								<img src="./img/shop02.png" alt="">
+								<img src="./img/tivi-lg-55sm8100pta.jpg" alt="">
 							</div>
 							<div class="shop-body">
-								<h3>Cameras<br>Collection</h3>
-								<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<h3>TiVi<br>Collection</h3>
+								<a href="infor2.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
+					</div>
+					<!-- /shop -->
+
+					<!-- shop -->
+					<div class="col-md-2 col-xs-6">
+						<div class="shop">
+							<div class="shop-img">
+								<img src="./img/tai-nghe-khong-day-huawei-freebuds-4-8.jpg" alt="">
+							</div>
+							<div class="shop-body">
+								<h3>Tai Nghe<br>Collection</h3>
+								<a href="infor3.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- /shop -->
+
+					<!-- shop -->
+					<div class="col-md-2 col-xs-6">
+						<div class="shop">
+							<div class="shop-img">
+								<img src="./img/loa-bluetooth-huawei-honor-am51-gia-re-7.jpg" alt="">
+							</div>
+							<div class="shop-body">
+								<h3>Loa<br>Collection</h3>
+								<a href="infor4.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+							</div>
+						</div>
+					</div>
+					<!-- /shop -->
+
+					<!-- shop -->
+					<div class="col-md-2 col-xs-6">
 					</div>
 					<!-- /shop -->
 				</div>
@@ -66,7 +105,7 @@
 							<h3 class="title">New Products</h3>
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
-									<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
+									<li class="active"><a data-toggle="tab" href="#tab">Laptops</a></li>
 									<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
 									<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
 									<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
@@ -684,4 +723,4 @@
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
-        <?php include "footer.htm";?>
+        <?php include "footer.html";?>
