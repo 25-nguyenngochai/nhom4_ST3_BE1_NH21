@@ -36,41 +36,76 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function getAllProductsDienThoai()
+    public function getAllProductsSP($type_id)
     {
-        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = 1");
+        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = ?");
+        $sql->bind_param("i", $type_id);
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function getAllProductsLap()
+    public function getAllProductsSPMN($type_id)
     {
-        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = 2");
+        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = ? ORDER BY id DESC LIMIT 5");
+        $sql->bind_param("i", $type_id);
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function getAllProductsTiVi()
+    public function getNewsProductsTopNB()
     {
-        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = 5");
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `feature` = 1 ORDER BY id DESC LIMIT 10");
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function getAllProductsTaiNghe()
+    //NHỮNG SP NỔI BẬT:
+    public function getNewsProductsTopNB1()
     {
-        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = 4");
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `feature` = 1 ORDER BY id DESC LIMIT 0,3");
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function getAllProductsLoa()
+    public function getNewsProductsTopNB2()
     {
-        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = 3");
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `feature` = 1 ORDER BY id DESC LIMIT 3,3");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getNewsProductsTopNB3()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `feature` = 1 ORDER BY id DESC LIMIT 6,3");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getNewsProductsTopNB4()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `feature` = 1 ORDER BY id DESC LIMIT 9,3");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getNewsProductsTopNB5()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `feature` = 1 ORDER BY id DESC LIMIT 12,3");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getNewsProductsTopNB6()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `feature` = 1 ORDER BY id DESC LIMIT 15,3");
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

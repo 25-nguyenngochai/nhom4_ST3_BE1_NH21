@@ -5,6 +5,13 @@ include "models/product.php";
 $product = new Product;
 $getAllProducts = $product -> getAllProducts();
 $getNewsProducts = $product -> getNewsProducts();
+$getNewsProductsTopNB = $product -> getNewsProductsTopNB();
+$getNewsProductsTopNB1 = $product -> getNewsProductsTopNB1();
+$getNewsProductsTopNB2 = $product -> getNewsProductsTopNB2();
+$getNewsProductsTopNB3 = $product -> getNewsProductsTopNB3();
+$getNewsProductsTopNB4 = $product -> getNewsProductsTopNB4();
+$getNewsProductsTopNB5 = $product -> getNewsProductsTopNB5();
+$getNewsProductsTopNB6 = $product -> getNewsProductsTopNB6();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -179,12 +186,11 @@ $getNewsProducts = $product -> getNewsProducts();
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="index.php">Home</a></li>
-						<li><a href="#">Hot Deals</a></li>
-						<li><a href="#">Categories</a></li>
-						<li><a href="#">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
+						<li><a href="result.php?id=1">Điện thoại</a></li>
+						<li><a href="result.php?id=2">Laptop</a></li>
+						<li><a href="result.php?id=3">Tablet</a></li>
+						<li><a href="result.php?id=5">Đông hồ thông minh</a></li>
+						<li><a href="result.php?id=4">Tai nghe</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>
