@@ -2,6 +2,8 @@
 include "config.php";
 include "models/db.php";
 include "models/product.php";
+include "models/manufacture.php";
+include "models/protype.php";
 $product = new Product;
 $getAllProducts = $product -> getAllProducts();
 $getNewsProducts = $product -> getNewsProducts();
@@ -12,6 +14,10 @@ $getNewsProductsTopNB3 = $product -> getNewsProductsTopNB3();
 $getNewsProductsTopNB4 = $product -> getNewsProductsTopNB4();
 $getNewsProductsTopNB5 = $product -> getNewsProductsTopNB5();
 $getNewsProductsTopNB6 = $product -> getNewsProductsTopNB6();
+$Manufacture = new Manufacture;
+$getAllManu = $Manufacture -> getAllManu();
+$Protype = new Protype;
+$getAllManuType = $Protype -> getAllManuType();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -186,11 +192,9 @@ $getNewsProductsTopNB6 = $product -> getNewsProductsTopNB6();
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="index.php">Home</a></li>
-						<li><a href="result.php?id=1">Điện thoại</a></li>
-						<li><a href="result.php?id=2">Laptop</a></li>
-						<li><a href="result.php?id=3">Tablet</a></li>
-						<li><a href="result.php?id=5">Đông hồ thông minh</a></li>
-						<li><a href="result.php?id=4">Tai nghe</a></li>
+						<?php foreach ($getAllManuType as $value):?>
+							<li><a href="products.php?type_id=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
+						<?php endforeach;?>
 					</ul>
 					<!-- /NAV -->
 				</div>

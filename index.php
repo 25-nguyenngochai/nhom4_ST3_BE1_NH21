@@ -11,11 +11,9 @@
                     <h3 class="title">New Products</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a href="result.php?typeid=1">Điện thoại</a></li>
-                            <li><a href="result.php?typeid=2">Laptop</a></li>
-                            <li><a href="result.php?typeid=3">Tablet</a></li>
-                            <li><a href="result.php?typeid=5">Đồng hồ thông minh</a></li>
-                            <li><a href="result.php?typeid=4">Tai nghe</a></li>
+                        <?php foreach ($getAllManuType as $value):?>
+							<li><a href="result.php?typeid=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
+						<?php endforeach;?>
                         </ul>
                     </div>
                 </div>
@@ -117,8 +115,8 @@
                         </li>
                     </ul>
                     <h2 class="text-uppercase">hot deal this week</h2>
-                    <p>New Collection Up to 50% OFF</p>
-                    <a class="primary-btn cta-btn" href="#">Shop now</a>
+                    <p>New Collection Up to 30% OFF</p>
+                    <a class="primary-btn cta-btn" href="result.php?typeknb">Shop now</a>
                 </div>
             </div>
         </div>
@@ -141,10 +139,9 @@
                     <h3 class="title">Top feature</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
-                            <li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-                            <li><a data-toggle="tab" href="#tab2">Accessories</a></li>
+                            <?php foreach ($getAllManuType as $value):?>
+							<li><a href="topfeature.php?type=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
+						<?php endforeach;?>
                         </ul>
                     </div>
                 </div>

@@ -246,6 +246,7 @@
                             <div class="product-img">
                                 <br>
                                 <img src="./img/<?php echo $value['image'] ?>" alt="">
+                                <?php echo "Không tìn thấy";?>
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
@@ -277,52 +278,6 @@
 						}
 					}
 					?>
-                    <!--lấy ra sản phẩm của type_id -->
-                    <?php
-                   if (isset($_GET['id'])){ 
-                    $id = $_GET['id'];
-                    $getAllProductsSP = $product-> getAllProductsSP($id);
-                    foreach ($getAllProductsSP as $value) {
-                    ?>
-                    <!-- product -->
-                    <div class="col-md-4 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <br>
-                                <img src="./img/<?php echo $value['image'] ?>" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
-                                <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                            class="tooltipp">add
-                                            to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
-                                            class="tooltipp">add
-                                            to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
-                                            view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                 }
-                 ?>
-                    <!--/lấy ra sản phẩm của type_id -->
                     <!--lấy ra 5 sản phẩm mới nhất theo type_id -->
                     <?php
                  if (isset($_GET['typeid'])){ 
@@ -372,7 +327,140 @@
                     }
                  }
                  ?>
-                    <!--/lấy ra 5 sản phẩm mới nhất theo type_id -->
+                    <!--/lấy ra 5 sản phẩm nổi bật nhất theo type_id -->
+                    <?php
+					if (isset($_GET['type'])) {
+						$type = $_GET['type'];
+						$getAllProductsSPNB = $product->getAllProductsSPNB($type);
+						foreach ($getAllProductsSPNB as $value) {
+					?>
+                    <!-- product -->
+                    <div class="col-md-4 col-xs-6">
+                        <div class="product">
+                            <div class="product-img">
+                                <br>
+                                <img src="./img/<?php echo $value['image'] ?>" alt="">
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">Category</p>
+                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product-btns">
+                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+                                            class="tooltipp">add to wishlist</span></button>
+                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
+                                            class="tooltipp">add to compare</span></button>
+                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+                                            view</span></button>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product -->
+                    <?php
+						}
+					}
+					?>
+                    <!--/lấy ra 20 sp không nổi bật -->
+                    <?php
+					if (isset($_GET['typeknb'])) {
+						$typeknb = $_GET['typeknb'];
+						$getNewsProductsTopKNB = $product->getNewsProductsTopKNB($typeknb);
+						foreach ($getNewsProductsTopKNB as $value) {
+					?>
+                    <!-- product -->
+                    <div class="col-md-4 col-xs-6">
+                        <div class="product">
+                            <div class="product-img">
+                                <br>
+                                <img src="./img/<?php echo $value['image'] ?>" alt="">
+                                <div class="product-label">
+                                    <span class="sale">30% OFF</span>
+                                </div>
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">Category</p>
+                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h4 class="product-price"><del><?php echo number_format($value['price'])?> VND </del></h4>
+                                <h4 class="product-price"><?php echo number_format(($value['price'] * 70) / 100) ?> VND</h4>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product-btns">
+                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+                                            class="tooltipp">add to wishlist</span></button>
+                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
+                                            class="tooltipp">add to compare</span></button>
+                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+                                            view</span></button>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product -->
+                    <?php
+						}
+					}
+					?>
+                    <?php
+					if (isset($_GET['manu_id'])){
+						$manu_id = $_GET['manu_id'];
+                            $getProductByManuId = $product->getProductByManuId($manu_id);
+                            foreach ($getProductByManuId as $value){
+					?>
+							<!-- product -->
+							<div class="col-md-4 col-xs-6">
+								<div class="product">
+									<div class="product-img">
+										<br>
+										<img src="./img/<?php echo $value['image'] ?>" alt="">
+										<div class="product-label">
+										</div>
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+										<h4 class="product-price"><?php echo number_format($value['price']) ?></h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+									</div>
+								</div>
+							</div>
+							<!-- /product -->
+					<?php
+                        }
+                    }
+					?>
                 </div>
                 <!-- /store products -->
                 <!-- /STORE -->
