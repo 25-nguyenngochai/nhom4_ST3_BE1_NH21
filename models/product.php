@@ -128,6 +128,15 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function getAllProductsSPNBTypeid($type_id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `type_id` = ? AND feature = 0");
+        $sql->bind_param("i", $type_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     //Phân trang products.php:
     public function get6ProductByManuId($type_id, $page, $perPage)
     {
@@ -150,6 +159,63 @@ class Product extends Db
       		$link = $link."<li><a href='$url&page=$j'> $j </a></li>";
      	}
      	return $link;
+    }
+
+    public function paginate1($url, $total, $perPage, $page, $offset)
+    {
+  
+      if ($total <= 0) {
+        return "";
+      }
+  
+      $totalLinks = ceil($total / $perPage);
+  
+      if($totalLinks <= 1) {
+        return "";
+      }
+  
+      $from = $page - $offset;
+      $to = $page + $offset;
+  
+      if($from <= 0) {
+        $from = 1;
+         $to = $offset * 2;
+      }
+      if($to > $totalLinks) {
+        $to = $totalLinks;
+      }
+  
+  
+      $link = "";
+  
+      for ($j = $from; $j <= $to; $j++) {
+  
+        // current url
+        $a = "{$url}&page={$j}";
+  
+        if ($j != $page) {
+          $link = $link . '<li><a href="' . $a . '" />' . $j . '</a></li>';
+        } else {
+          $link = $link . '<li class="active">' . $j . '</li>';
+        }
+  
+  
+        if ($j == $to && $to < $totalLinks) {
+          $pageNext = $j + 1;
+          // current url
+          $a = "{$url}&page={$pageNext}";
+          $link = $link . '<li><a href="' .$a .'"><i class="fa fa-angle-right"></i></a></li>';
+        }
+        
+        if ($j == $from && $from > 1) {
+          $pagePrev = $j - 1;
+          // current url
+          $a = "{$url}&page={$pagePrev}";
+          $link = '<li><a href="' .$a .'"><i class="fa fa-angle-left"></i></a></li>' . $link;
+        }
+  
+      }
+      return $link;
     }
     public function getProductByManuId($manu_id)
     {
@@ -196,4 +262,16 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+     //Phân trang newproducts.php những sp theo type_id không nổi bật:
+     public function get6ProductByKNBTypeid($type_id, $page, $perPage)
+     {
+         // Tính số thứ tự trang bắt đầu
+         $firstLink = ($page - 1) * $perPage;
+         $sql = self::$connection->prepare("SELECT * FROM products WHERE `type_id` = ? AND feature = 0 LIMIT ?, ?");
+         $sql->bind_param("iii", $type_id, $firstLink, $perPage);
+         $sql->execute(); //return an object
+         $items = array();
+         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+         return $items; //return an array
+     }
 }

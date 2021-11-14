@@ -9,9 +9,9 @@ include "header.php";
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="?typeknb">Home</a></li>
                     <?php foreach ($getAllManuType as $value):?>
-                    <li><a href="?type=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?></a></li>
+                    <li><a href="?typeid_knb=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?></a></li>
                     <?php endforeach;?>
                 </ul>
             </div>
@@ -237,9 +237,10 @@ include "header.php";
                 <!-- /store top filter -->
 
                 <!-- store products -->
+                <?php
+					if (isset($_GET['typeknb'])) :?>
                 <div class="row">
                     <?php
-					if (isset($_GET['typeknb'])) :
 						$typeknb = $_GET['typeknb'];
 						$getNewsProductsTopKNB = $product->getNewsProductsTopKNB($typeknb);
 						// hiển thị 5 sản phẩm trên 1 trang
@@ -264,14 +265,14 @@ include "header.php";
                                 <br>
                                 <img src="./img/<?php echo $value['image'] ?>" alt="">
                                 <div class="product-label">
-                                    <span class="sale">trả góp 0%</span>
-                                    <span class="new">NEW</span>
+                                    <span class="sale">30% OFF</span>
                                 </div>
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
                                 <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
-                                <h4 class="product-price"><?php echo number_format($value['price']) ?></h4>
+                                <h4 class="product-price"><del><?php echo number_format($value['price'])?> VND </del></h4>
+                                <h4 class="product-price"><?php echo number_format(($value['price'] * 70) / 100) ?> VND</h4>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -309,6 +310,85 @@ include "header.php";
                     </ul>
                 </div>
                 <?php endif; ?>
+
+
+                <!---------------------------------->
+
+
+                <!-- /store bottom filter -->
+                <?php
+					if (isset($_GET['typeid_knb'])) :?>
+                <div class="row">
+                    <?php
+						$typeid_knb = $_GET['typeid_knb'];
+						$getAllProductsSPNBTypeid = $product -> getAllProductsSPNBTypeid($typeid_knb);
+						// hiển thị 5 sản phẩm trên 1 trang
+						$perPage = 6;
+						// Lấy số trang trên thanh địa chỉ
+						if (isset($_GET['page'])) {
+							$page = $_GET['page'];
+						} else {
+							$page = 1;
+						}
+						// Tính tổng số dòng, ví dụ kết quả là 18
+						$total = count($getAllProductsSPNBTypeid);
+						// lấy đường dẫn đến file hiện hành
+						$url = $_SERVER['PHP_SELF']."?typeid_knb=".$typeid_knb;
+						$get6ProductByKNBTypeid = $product -> get6ProductByKNBTypeid($typeid_knb, $page, $perPage);
+						foreach ($get6ProductByKNBTypeid as $value) :
+					?>
+                    <!-- product -->
+                    <div class="col-md-4 col-xs-6">
+                        <div class="product">
+                            <div class="product-img">
+                                <br>
+                                <img src="./img/<?php echo $value['image'] ?>" alt="">
+                                <div class="product-label">
+                                    <span class="sale">30% OFF</span>
+                                </div>
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">Category</p>
+                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h4 class="product-price"><del><?php echo number_format($value['price'])?> VND </del></h4>
+                                <h4 class="product-price"><?php echo number_format(($value['price'] * 70) / 100) ?> VND</h4>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product-btns">
+                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+                                            class="tooltipp">add to wishlist</span></button>
+                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
+                                            class="tooltipp">add to compare</span></button>
+                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
+                                            view</span></button>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /product -->
+                    <?php
+						endforeach;
+					?>
+
+                </div>
+                <!-- /store products -->
+
+                <!-- store bottom filter -->
+                <div class="store-filter clearfix">
+                    <ul class="store-pagination">
+                        <?php echo $product -> paginate($url, $total, $perPage) ?>
+                    </ul>
+                </div>
+                <?php endif; ?>
+                <!-- /store bottom filter -->
             </div>
             <!-- /STORE -->
         </div>
