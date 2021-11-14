@@ -254,8 +254,8 @@ include "header.php";
 						$total = count($getProductByTypeId);
 						// lấy đường dẫn đến file hiện hành
 						$url = $_SERVER['PHP_SELF']."?type_id=".$type_id;
-						$get4ProductByManuId = $product -> get4ProductByManuId($type_id, $page, $perPage);
-						foreach ($get4ProductByManuId as $value) :
+						$get6ProductByManuId = $product -> get6ProductByManuId($type_id, $page, $perPage);
+						foreach ($get6ProductByManuId as $value) :
 					?>
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">

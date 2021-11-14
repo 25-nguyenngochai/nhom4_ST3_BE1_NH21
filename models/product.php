@@ -47,7 +47,7 @@ class Product extends Db
     }
     public function getAllProductsSPMN($type_id)
     {
-        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = ? ORDER BY id LIMIT 5");
+        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = ? ORDER BY id");
         $sql->bind_param("i", $type_id);
         $sql->execute(); //return an object
         $items = array();
@@ -129,7 +129,7 @@ class Product extends Db
         return $items; //return an array
     }
     //Phân trang products.php:
-    public function get4ProductByManuId($type_id, $page, $perPage)
+    public function get6ProductByManuId($type_id, $page, $perPage)
     {
         // Tính số thứ tự trang bắt đầu
         $firstLink = ($page - 1) * $perPage;
@@ -161,12 +161,36 @@ class Product extends Db
         return $items; //return an array
     }
     //Phân trang topfeature.php:
-    public function get4ProductByManTypeid($type_id, $page, $perPage)
+    public function get6ProductByManTypeid($type_id, $page, $perPage)
     {
         // Tính số thứ tự trang bắt đầu
         $firstLink = ($page - 1) * $perPage;
         $sql = self::$connection->prepare("SELECT * FROM products WHERE `type_id` = ? AND `feature` = 1 ORDER BY id LIMIT ?, ?");
         $sql->bind_param("iii", $type_id, $firstLink, $perPage);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    //Phân trang newproducts.php:
+    public function get6ProductByManType($type_id, $page, $perPage)
+    {
+        // Tính số thứ tự trang bắt đầu
+        $firstLink = ($page - 1) * $perPage;
+        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `type_id` = ? ORDER BY id LIMIT ?, ?");
+        $sql->bind_param("iii", $type_id, $firstLink, $perPage);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    //Phân trang discount.php:
+    public function get6ProductByDiscount($page, $perPage)
+    {
+        // Tính số thứ tự trang bắt đầu
+        $firstLink = ($page - 1) * $perPage;
+        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE feature = 0 LIMIT ?, ?");
+        $sql->bind_param("ii", $firstLink, $perPage);
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

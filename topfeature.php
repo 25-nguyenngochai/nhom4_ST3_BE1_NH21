@@ -254,8 +254,8 @@ include "header.php";
 						$total = count($getAllProductsSPNB);
 						// lấy đường dẫn đến file hiện hành
 						$url = $_SERVER['PHP_SELF']."?type=".$type;
-						$get4ProductByManTypeid = $product -> get4ProductByManTypeid($type, $page, $perPage);
-						foreach ($get4ProductByManTypeid as $value) :
+						$get6ProductByManTypeid = $product -> get6ProductByManTypeid($type, $page, $perPage);
+						foreach ($get6ProductByManTypeid as $value) :
 					?>
 							<!-- product -->
 							<div class="col-md-4 col-xs-6">
@@ -298,7 +298,6 @@ include "header.php";
 
 				<!-- store bottom filter -->
 				<div class="store-filter clearfix">
-					<span class="store-qty">Showing 20-100 products</span>
 					<ul class="store-pagination">
 				<?php echo $product -> paginate($url, $total, $perPage) ?>	
 				</ul>

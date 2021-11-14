@@ -12,7 +12,7 @@
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
                         <?php foreach ($getAllManuType as $value):?>
-							<li><a href="result.php?typeid=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
+							<li><a href="newproducts.php?typeid=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
 						<?php endforeach;?>
                         </ul>
                     </div>
@@ -116,7 +116,7 @@
                     </ul>
                     <h2 class="text-uppercase">hot deal this week</h2>
                     <p>New Collection Up to 30% OFF</p>
-                    <a class="primary-btn cta-btn" href="result.php?typeknb">Shop now</a>
+                    <a class="primary-btn cta-btn" href="discount.php?typeknb">Shop now</a>
                 </div>
             </div>
         </div>
