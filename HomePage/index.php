@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                        <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                         <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
@@ -164,7 +164,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                        <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                         <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
@@ -228,7 +228,7 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -245,7 +245,7 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -290,7 +290,7 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -318,7 +318,7 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -334,7 +334,7 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -366,16 +366,16 @@
                     </form>
                     <ul class="newsletter-follow">
                         <li>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="https://twitter.com/?lang=vi"><i class="fa fa-twitter"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -386,4 +386,4 @@
     <!-- /container -->
 </div>
 <!-- /NEWSLETTER -->
-<?php include "footer.html";?>
+<?php include "footer.php";?>

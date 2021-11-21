@@ -11,7 +11,7 @@ class Product extends Db
     }
     public function getProductById($id)
     {
-        $sql = self::$connection->prepare("SELECT * FROM products WHERE id = ?");
+        $sql = self::$connection->prepare("SELECT * FROM `products`, `protypes`,`manufactures` WHERE `products`.`manu_id` = `manufactures`.`manu_id` AND `products`.`type_id` = `protypes`.`type_id` AND id = ?");
         $sql->bind_param("i",$id);
         $sql->execute(); //return an object
         $items = array();
@@ -217,11 +217,4 @@ class Product extends Db
          $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
          return $items; //return an array
      }
-     public function getAllCount(){
-        $sql = self::$connection->prepare("SELECT * FROM `products`");
-        $sql->execute(); //return an object
-        $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items; //return an array
-    }
 }

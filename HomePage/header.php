@@ -14,7 +14,6 @@ $getNewsProductsTopNB3 = $product -> getNewsProductsTopNB3();
 $getNewsProductsTopNB4 = $product -> getNewsProductsTopNB4();
 $getNewsProductsTopNB5 = $product -> getNewsProductsTopNB5();
 $getNewsProductsTopNB6 = $product -> getNewsProductsTopNB6();
-$getAllCount = $product -> getAllCount();
 $Manufacture = new Manufacture;
 $getAllManu = $Manufacture -> getAllManu();
 $Protype = new Protype;
@@ -98,8 +97,6 @@ $getAllManuType = $Protype -> getAllManuType();
 								<form method="get" action="result.php">
 									<select class="input-select">
 										<option value="0">All Categories</option>
-										<option value="1">Category 01</option>
-										<option value="1">Category 02</option>
 									</select>
 									<input class="input" placeholder="Search here" name="keyword">
 									<button type="submit" class="search-btn">Search</button>

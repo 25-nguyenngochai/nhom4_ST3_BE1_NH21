@@ -22,11 +22,9 @@
                     <div class="footer">
                         <h3 class="footer-title">Categories</h3>
                         <ul class="footer-links">
-                            <li><a href="#">Hot deals</a></li>
-                            <li><a href="#">Laptops</a></li>
-                            <li><a href="#">Smartphones</a></li>
-                            <li><a href="#">Cameras</a></li>
-                            <li><a href="#">Accessories</a></li>
+                            <?php foreach ($getAllManuType as $value):?>
+							<li><a href="products.php?type_id=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
+						    <?php endforeach;?>
                         </ul>
                     </div>
                 </div>

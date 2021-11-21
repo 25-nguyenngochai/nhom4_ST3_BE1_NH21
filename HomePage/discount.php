@@ -167,75 +167,11 @@ include "header.php";
                     </div>
                 </div>
                 <!-- /aside Widget -->
-
-                <!-- aside Widget -->
-                <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product01.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product02.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- /aside Widget -->
             </div>
             <!-- /ASIDE -->
 
             <!-- STORE -->
             <div id="store" class="col-md-9">
-                <!-- store top filter -->
-                <div class="store-filter clearfix">
-                    <div class="store-sort">
-                        <label>
-                            Sort By:
-                            <select class="input-select">
-                                <option value="0">Popular</option>
-                                <option value="1">Position</option>
-                            </select>
-                        </label>
-
-                        <label>
-                            Show:
-                            <select class="input-select">
-                                <option value="0">20</option>
-                                <option value="1">50</option>
-                            </select>
-                        </label>
-                    </div>
-                    <ul class="store-grid">
-                        <li class="active"><i class="fa fa-th"></i></li>
-                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>
-                    </ul>
-                </div>
-                <!-- /store top filter -->
-
                 <!-- store products -->
                 <?php
 					if (isset($_GET['typeknb'])) :?>
@@ -270,9 +206,13 @@ include "header.php";
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
-                                <h4 class="product-price"><del><?php echo number_format($value['price'])?> VND </del></h4>
-                                <h4 class="product-price"><?php echo number_format(($value['price'] * 70) / 100) ?> VND</h4>
+                                <h3 class="product-name"><a
+                                        href="details.php?idknb=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
+                                <h4 class="product-price"><del><?php echo number_format($value['price'])?> VND </del>
+                                </h4>
+                                <h4 class="product-price"><?php echo number_format(($value['price'] * 70) / 100) ?> VND
+                                </h4>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -349,9 +289,13 @@ include "header.php";
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
-                                <h4 class="product-price"><del><?php echo number_format($value['price'])?> VND </del></h4>
-                                <h4 class="product-price"><?php echo number_format(($value['price'] * 70) / 100) ?> VND</h4>
+                                <h3 class="product-name"><a
+                                        href="details.php?idknb=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
+                                <h4 class="product-price"><del><?php echo number_format($value['price'])?> VND </del>
+                                </h4>
+                                <h4 class="product-price"><?php echo number_format(($value['price'] * 70) / 100) ?> VND
+                                </h4>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -398,4 +342,4 @@ include "header.php";
 </div>
 <!-- /SECTION -->
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>

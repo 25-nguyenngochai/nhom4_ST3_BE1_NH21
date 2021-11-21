@@ -11,7 +11,7 @@ include "header.php";
 				<ul class="breadcrumb-tree">
 					<li><a href="#">Home</a></li>
 					<?php foreach($getAllManu as $value):?>	
-					<li><a href="result.php?manu_id=<?php echo $value['manu_id']?>"><?php echo $value['manu_name']?></a></li>
+					<li><a href="?keyword=<?php echo $value['manu_id']?>"><?php echo $value['manu_name']?></a></li>
 					<?php endforeach?>
 				</ul>
 			</div>
@@ -124,79 +124,16 @@ include "header.php";
 					</div>
 				</div>
 				<!-- /aside Widget -->
-
-				<!-- aside Widget -->
-				<div class="aside">
-					<h3 class="aside-title">Top selling</h3>
-					<div class="product-widget">
-						<div class="product-img">
-							<img src="./img/product01.png" alt="">
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-					</div>
-
-					<div class="product-widget">
-						<div class="product-img">
-							<img src="./img/product02.png" alt="">
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-					</div>
-
-					<div class="product-widget">
-						<div class="product-img">
-							<img src="./img/product03.png" alt="">
-						</div>
-						<div class="product-body">
-							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="#">product name goes here</a></h3>
-							<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-						</div>
-					</div>
-				</div>
-				<!-- /aside Widget -->
 			</div>
 			<!-- /ASIDE -->
 
 			<!-- STORE -->
 			<div id="store" class="col-md-9">
-				<!-- store top filter -->
-				<div class="store-filter clearfix">
-					<div class="store-sort">
-						<label>
-							Sort By:
-							<select class="input-select">
-								<option value="0">Popular</option>
-								<option value="1">Position</option>
-							</select>
-						</label>
-
-						<label>
-							Show:
-							<select class="input-select">
-								<option value="0">20</option>
-								<option value="1">50</option>
-							</select>
-						</label>
-					</div>
-					<ul class="store-grid">
-						<li class="active"><i class="fa fa-th"></i></li>
-						<li><a href="#"><i class="fa fa-th-list"></i></a></li>
-					</ul>
-				</div>
-				<!-- /store top filter -->
-
 				<!-- store products -->
-				<div class="row">
-					<?php
-					if (isset($_GET['type_id'])) :
+				<?php
+					if (isset($_GET['type_id'])):?>
+                <div class="row">
+				<?php
 						$type_id = $_GET['type_id'];
 						$getProductByTypeId = $product->getProductByTypeId($type_id);
 						// hiển thị 5 sản phẩm trên 1 trang
@@ -225,7 +162,7 @@ include "header.php";
 									</div>
 									<div class="product-body">
 										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#"><?php echo $value['name'] ?></a></h3>
+										<h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
 										<h4 class="product-price"><?php echo number_format($value['price']) ?></h4>
 										<div class="product-rating">
 											<i class="fa fa-star"></i>
@@ -255,10 +192,9 @@ include "header.php";
 
 				<!-- store bottom filter -->
 				<div class="store-filter clearfix">
-					<span class="store-qty">Showing 20-100 products</span>
 					<ul class="store-pagination">
-				<?php echo $product -> paginate($url, $total, $perPage, $page, 1) ?>	
-				</ul>
+				    <?php echo $product -> paginate($url, $total, $perPage) ?>
+				    </ul>
 				</div>
 				<?php endif; ?>
 				<!-- /store bottom filter -->
@@ -271,4 +207,4 @@ include "header.php";
 </div>
 <!-- /SECTION -->
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>
