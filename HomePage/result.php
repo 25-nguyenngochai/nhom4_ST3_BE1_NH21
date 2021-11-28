@@ -183,7 +183,6 @@
                             <div class="product-img">
                                 <br>
                                 <img src="../img/<?php echo $value['image'] ?>" alt="">
-                                <?php echo "Không tìn thấy";?>
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>

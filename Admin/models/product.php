@@ -55,5 +55,16 @@ class Product extends Db
      	}
      	return $link;
     }
-    
+    public function addProducts($name,$manu_id,$type_id,$price,$image,$desc,$feature)
+    {
+        $sql = self::$connection->prepare("INSERT INTO `products`(`name`, `manu_id`, `type_id`, `price`, `image`, `description`, `feature`) VALUES (?,?,?,?,?,?,?)");
+        $sql->bind_param("siiissi", $name,$manu_id,$type_id,$price,$image,$desc,$feature);
+        return $sql->execute();
+    }
+    public function delProducts($id)
+    {
+        $sql = self::$connection->prepare("DELETE FROM `products` WHERE `id` = ?");
+        $sql->bind_param("i", $id);
+        return $sql->execute();
+    }
 }

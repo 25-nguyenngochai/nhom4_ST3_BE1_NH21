@@ -22,76 +22,76 @@
     <!-- Main content -->
     <section class="content">
         <!--add products-->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Products Add</h3>
+        <form action="Addproducts.php" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Products Add</h3>
 
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="inputName">Id</label>
-                            <input type="text" id="Id" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName">Name</label>
-                            <input type="text" id="Name" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputStatus">Type Name</label>
-                            <select id="Type_id" class="form-control custom-select">
-                                <?php  $getAllManuType = $Protype ->getAllManuType();
-                                foreach($getAllManuType as $value):?>
-                                <option><?php echo $value['type_name'];?></option>
-                                <?php endforeach;?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputStatus">Manu Name</label>
-                            <select id="Manu_id" class="form-control custom-select">
-                                <?php $getAllManu = $Manufacture -> getAllManu();
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Name</label>
+                                <input type="text" id="name" class="form-control" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus">Manu Name</label>
+                                <select id="manu_id" class="form-control custom-select" name="manu_id">
+                                    <?php $getAllManu = $Manufacture -> getAllManu();
                                 foreach($getAllManu as $value):?>
-                                <option><?php echo $value['manu_name'];?></option>
-                                <?php endforeach;?>
-                            </select>
+                                    <option value=<?php echo $value['manu_id'];?>><?php echo $value['manu_name'];?>
+                                    </option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus">Type Name</label>
+                                <select id="type_id" class="form-control custom-select" name="type_id">
+                                    <?php  $getAllManuType = $Protype ->getAllManuType();
+                                foreach($getAllManuType as $value):?>
+                                    <option value=<?php echo $value['type_id'];?>><?php echo $value['type_name'];?>
+                                    </option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Price</label>
+                                <input type="text" id="price" class="form-control" name="price" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Image</label>
+                                <input type="file" id="image" class="form-control" name="image" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDescription">Description</label>
+                                <textarea id="description" class="form-control" rows="4" name="description"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputStatus">Feature</label>
+                                <select id="feature" class="form-control custom-select" name="feature">
+                                    <option>0</option>
+                                    <option>1</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputName">Price</label>
-                            <input type="text" id="Price" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName">Image</label>
-                            <input type="text" id="Image" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputDescription">Description</label>
-                            <textarea id="Description" class="form-control" rows="4"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName">Feature</label>
-                            <input type="text" id="Feature" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName">created_at</label>
-                            <input type="date" id="created_at" class="form-control">
-                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card-body -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <input type="submit" value="Create new Products" class="btn btn-success float-right">
+            <div class="row">
+                <div class="col-12">
+                    <input name="submit" type="submit" value="Add Products" class="btn btn-success float-right">
+                </div>
             </div>
-        </div>
+        </form>
     </section>
     <!-- /.content -->
 </div>
@@ -119,41 +119,38 @@
 
     <!-- Main content -->
     <section class="content">
-        <!--add products-->
-        <div class="row">
-            <div class="col-md-12">
-                <br><br>
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Protypes Add</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
+        <form action="AddProtypes.php" method="post" enctype="multipart/form-data">
+            <!--add products-->
+            <div class="row">
+                <div class="col-md-12">
+                    <br><br>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Protypes Add</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Name</label>
+                                <input name="name" type="text" id="name" class="form-control" required>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="inputName">Id</label>
-                            <input type="text" id="Id" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName">Name</label>
-                            <input type="text" id="Name" class="form-control">
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <br><br>
-                <input type="submit" value="Create new Protypes" class="btn btn-success float-right">
+            <div class="row">
+                <div class="col-12">
+                    <br><br>
+                    <input name="submit" type="submit" value="Add Protypes" class="btn btn-success float-right">
+                </div>
             </div>
-        </div>
+        </form>
     </section>
     <!-- /.content -->
 </div>
@@ -182,40 +179,37 @@
     <!-- Main content -->
     <section class="content">
         <!--add products-->
-        <div class="row">
-            <div class="col-md-12">
-                <br><br>
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Manufactures Add</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
+        <form action="AddManufactures.php" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-12">
+                    <br><br>
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Manufactures Add</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="inputName">Name</label>
+                                <input name="name" type="text" id="Name" class="form-control" required>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="inputName">Id</label>
-                            <input type="text" id="Id" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputName">Name</label>
-                            <input type="text" id="Name" class="form-control">
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <br><br>
-                <input type="submit" value="Create new Manufactures" class="btn btn-success float-right">
+            <div class="row">
+                <div class="col-12">
+                    <br><br>
+                    <input name="submit" type="submit" value="Add Manufactures" class="btn btn-success float-right">
+                </div>
             </div>
-        </div>
+        </form>
     </section>
     <!-- /.content -->
 </div>

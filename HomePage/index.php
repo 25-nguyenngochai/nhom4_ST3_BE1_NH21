@@ -1,5 +1,29 @@
 <?php include "header.php";?>
 <!-- SECTION -->
+<br><br>
+<div class="chuyenanh">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="slide">
+                    <div class="dieuhuong">
+                        <i class="fa fa-chevron-circle-left" onclick="Back();"></i>
+                        <i class="fa fa-chevron-circle-right" onclick="Next();"></i>
+                    </div>
+                    <div class="chuyen-slide">
+                        <a><img src="../img/Aseri-830-300-830x300-1.png" alt="slide"></a>
+                        <a><img src="../img/4.jpg" alt="slide"></a>
+                        <a><img src="../img/tab-s7-fe-800-200-800x200-1.png" alt="slide"></a>
+                        <a><img src="../img/800-200-800x200-207.png" alt="slide"></a>
+                        <a><img src="../img/800-200-800x200-211.png" alt="slide"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /SECTION -->
+<!-- SECTION -->
 <div class="section">
     <!-- container -->
     <div class="container">
@@ -11,9 +35,10 @@
                     <h3 class="title">New Products</h3>
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
-                        <?php foreach ($getAllManuType as $value):?>
-							<li><a href="newproducts.php?typeid=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
-						<?php endforeach;?>
+                            <?php foreach ($getAllManuType as $value):?>
+                            <li><a href="newproducts.php?typeid=<?php echo $value['type_id']?>">
+                                    <?php echo $value['type_name']?> </a></li>
+                            <?php endforeach;?>
                         </ul>
                     </div>
                 </div>
@@ -40,7 +65,8 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                        <h3 class="product-name"><a href="Yourcar.php?youcar=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                        </h3>
                                         <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
@@ -59,8 +85,8 @@
                                         </div>
                                     </div>
                                     <div class="add-to-cart">
-                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                                            cart</button>
+                                        <button type="submit" class="add-to-cart-btn"><a href="Yourcar.php?youcar=<?php echo $value['id']?>"><i class="fa fa-shopping-cart"></i> add to
+                                            cart</a></button>
                                     </div>
                                 </div>
                                 <!-- /product -->
@@ -140,8 +166,9 @@
                     <div class="section-nav">
                         <ul class="section-tab-nav tab-nav">
                             <?php foreach ($getAllManuType as $value):?>
-							<li><a href="topfeature.php?type=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
-						<?php endforeach;?>
+                            <li><a href="topfeature.php?type=<?php echo $value['type_id']?>">
+                                    <?php echo $value['type_name']?> </a></li>
+                            <?php endforeach;?>
                         </ul>
                     </div>
                 </div>
@@ -164,7 +191,9 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                        <h3 class="product-name"><a
+                                                href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                        </h3>
                                         <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                                         <div class="product-rating">
                                             <i class="fa fa-star"></i>
@@ -228,7 +257,9 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a
+                                        href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -245,7 +276,9 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a
+                                        href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -273,7 +306,9 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a
+                                        href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -290,7 +325,9 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a
+                                        href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -318,7 +355,9 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a
+                                        href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>
@@ -334,7 +373,9 @@
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a
+                                        href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?> VND</h4>
                             </div>
                         </div>

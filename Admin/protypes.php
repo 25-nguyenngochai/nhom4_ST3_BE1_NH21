@@ -10,7 +10,6 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Protypes</li>
                     </ol>
                 </div>
@@ -27,13 +26,14 @@
                 <h3 class="card-title">Protypes</h3>
                 <a class="col-md-5" href="#">
                     <i class="glyphicon glyphicon-envelope"></i></a>
-
                 <div class="card-tools">
+                    <a class="btn btn-info btn-sm" href="Addproject.php?addprotypes">
+                        <i class="fas fa-cart-plus"></i>
+                        </i>
+                        Add
+                    </a>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
                     </button>
                 </div>
             </div>
@@ -53,23 +53,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php  $getAllManuType = $Protype ->getAllManuType();
-                        foreach($getAllManuType as $value):?>
+                        <?php  $getAllManuTypeDesc = $Protype ->getAllManuTypeDesc();
+                        foreach($getAllManuTypeDesc as $value):?>
                         <tr>
                             <td><?php echo $value['type_id'];?></td>
                             <td><a><?php echo $value['type_name'];?></a></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="Addproject.php?addprotypes">
-                                    <i class="fas fa-cart-plus"></i>
-                                    </i>
-                                    Add
-                                </a>
                                 <a class="btn btn-info btn-sm" href="Editproject.php?editprotypes">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="#">
+                                <a class="btn btn-danger btn-sm" href="delProtypes.php?id=<?php echo $value['type_id'];?>">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete

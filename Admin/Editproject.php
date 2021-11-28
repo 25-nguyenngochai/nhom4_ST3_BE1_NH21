@@ -78,7 +78,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <input type="submit" value="Create new Products" class="btn btn-success float-right">
+                <input type="submit" value="Edit Products" class="btn btn-success float-right">
             </div>
         </div>
     </section>
@@ -140,7 +140,7 @@
         <div class="row">
             <div class="col-12">
                 <br><br>
-                <input type="submit" value="Create new Protypes" class="btn btn-success float-right">
+                <input type="submit" value="Edit Protypes" class="btn btn-success float-right">
             </div>
         </div>
     </section>
@@ -202,7 +202,7 @@
         <div class="row">
             <div class="col-12">
                 <br><br>
-                <input type="submit" value="Create new Manufactures" class="btn btn-success float-right">
+                <input type="submit" value="Edit Manufactures" class="btn btn-success float-right">
             </div>
         </div>
     </section>
