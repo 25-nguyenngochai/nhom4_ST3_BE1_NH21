@@ -36,11 +36,11 @@
                     </div>
                     <br>
                     <p><?php echo $value['description'] ?></p>
-                    <div class="add-to-cart"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                            cart</button></div>
-                    <ul class="product-btns">
-                        <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-                    </ul>
+                    <br>
+                    <div class="add-to-cart"> <a class="primary-btn cta-btn"
+                            href="Yourcar.php?youcar=<?php echo $value['id']?>"><i class="fa fa-shopping-cart"></i> add
+                            to cart</a>
+                    </div>
                     <ul class="product-links">
                         <li>Manufacturer:</li>
                         <li><?php echo $value['type_name']?></li>
@@ -53,7 +53,8 @@
                         <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://twitter.com/?lang=vi"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="https://www.google.com.vn/?hl=vi"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="https://www.google.com/intl/vi/gmail/about/"><i class="fa fa-envelope"></i></a></li>
+                        <li><a href="https://www.google.com/intl/vi/gmail/about/"><i class="fa fa-envelope"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -102,8 +103,8 @@
 
         <!---->
 
-         <!-- row -->
-         <?php if(isset($_GET['idknb'])):
+        <!-- row -->
+        <?php if(isset($_GET['idknb'])):
 							$idknb = $_GET['idknb'];
 							$getProductById = $product -> getProductById($idknb);
 								foreach ($getProductById as $value):
@@ -135,11 +136,11 @@
                     </div>
                     <br>
                     <p><?php echo $value['description'] ?></p>
-                    <div class="add-to-cart"><button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
-                            cart</button></div>
-                    <ul class="product-btns">
-                        <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-                    </ul>
+                    <br>
+                    <div class="add-to-cart"> <a class="primary-btn cta-btn"
+                            href="Yourcar.php?youcar=<?php echo $value['id']?>"><i class="fa fa-shopping-cart"></i> add
+                            to cart</a>
+                    </div>
                     <ul class="product-links">
                         <li>Manufacturer:</li>
                         <li><?php echo $value['type_name']?></li>
@@ -152,7 +153,8 @@
                         <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://twitter.com/?lang=vi"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="https://www.google.com.vn/?hl=vi"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="https://www.google.com/intl/vi/gmail/about/"><i class="fa fa-envelope"></i></a></li>
+                        <li><a href="https://www.google.com/intl/vi/gmail/about/"><i class="fa fa-envelope"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>

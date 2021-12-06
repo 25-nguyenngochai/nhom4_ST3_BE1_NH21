@@ -45,7 +45,7 @@
                                 <select id="manu_id" class="form-control custom-select" name="manu_id">
                                     <?php $getAllManu = $Manufacture -> getAllManu();
                                 foreach($getAllManu as $value):?>
-                                    <option value=<?php echo $value['manu_id'];?>><?php echo $value['manu_name'];?>
+                                    <option value="<?php echo $value['manu_id'];?>"><?php echo $value['manu_name'];?>
                                     </option>
                                     <?php endforeach;?>
                                 </select>
@@ -55,14 +55,14 @@
                                 <select id="type_id" class="form-control custom-select" name="type_id">
                                     <?php  $getAllManuType = $Protype ->getAllManuType();
                                 foreach($getAllManuType as $value):?>
-                                    <option value=<?php echo $value['type_id'];?>><?php echo $value['type_name'];?>
+                                    <option value="<?php echo $value['type_id'];?>"><?php echo $value['type_name'];?>
                                     </option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Price</label>
-                                <input type="text" id="price" class="form-control" name="price" required>
+                                <input type="number" id="price" class="form-control" name="price" required>
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Image</label>

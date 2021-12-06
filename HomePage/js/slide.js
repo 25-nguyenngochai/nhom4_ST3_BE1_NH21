@@ -165,4 +165,174 @@ function giam()
         }
     }
 	
+function zoom(event){
+  var zoomer = event.currentTarget;
+  x = event.offsetX/zoomer.offsetWidth*100;
+  y = event.offsetY/zoomer.offsetHeight*100;
+  zoomer.style.backgroundPosition = x + '% ' + y + '%';
+}	
+function chuyenanhmoi1(){
+	
+	document.getElementById('dt2-1-1').style.backgroundImage="url(img/phone/iphone/5.1.jpg)";
+     document.getElementById('anhchuyen').src='img/phone/iphone/5.1.jpg';
+}
+function chuyenanhmoi2(){
+	
+	document.getElementById('dt2-1-1').style.backgroundImage="url(img/phone/iphone/5.2.jpg)";
+     document.getElementById('anhchuyen').src='img/phone/iphone/5.2.jpg';
+}
+function chuyenanhmoi3(){
+	
+	document.getElementById('dt2-1-1').style.backgroundImage="url(img/phone/iphone/5.3.jpg)";
+     document.getElementById('anhchuyen').src='img/phone/iphone/5.3.jpg';
+}
+function chuyenanhmoi4(){
+	
+	document.getElementById('dt2-1-1').style.backgroundImage="url(img/phone/iphone/5.4.jpg)";
+     document.getElementById('anhchuyen').src='img/phone/iphone/5.4.jpg';
+}
+function page1(){
+    document.getElementById('page-1').style.marginTop="0";
+	document.getElementById('page-1').style.zIndex="3";
+	document.getElementById('page-1').style.position="relative";
+	document.getElementById('page-2').style.zIndex="-3";
+	document.getElementById('page-2').style.position="absolute";
+	document.getElementById('page-2').style.marginTop="-9999px";
+    document.getElementById('page1').style.color="red";
+    document.getElementById('page2').style.color="white";
+}
+function page2(){
+    document.getElementById('page-2').style.marginTop="0";
+	document.getElementById('page-2').style.zIndex="3";
+	document.getElementById('page-2').style.position="relative";
+	document.getElementById('page-1').style.zIndex="-3";
+	document.getElementById('page-1').style.position="absolute";
+	document.getElementById('page-1').style.marginTop="-9999px";
+        document.getElementById('page2').style.color="red";
+    document.getElementById('page1').style.color="white";
+}
 
+
+function tangsp(){
+	var tang=document.getElementById('giohang').innerHTML;
+    document.getElementById('giohang').innerHTML=parseInt(tang)+1;
+}
+function tinhtong()
+{ 
+   var sotien=0;
+  var sosp=document.getElementById('sosp');
+  	var spct=sosp.children;
+	var sll=spct.length;
+	document.getElementById('giohang').innerHTML=""+sll;
+  for(let i=0;i<spct.length;i++)
+  {
+    
+    var spct1=spct[i];
+    var gia=spct1.children[1].innerHTML;
+	var sl=spct1.children[2];
+	var sl1=sl.children[1].value;
+	var sl2=parseInt(sl1);
+    var deco2=gia.match(/\d/g);
+    var deco3=deco2.join("");
+	var deco4=parseInt(deco3);
+	var giatong=sl2*deco4;
+	spct1.children[3].innerHTML=giatong+'đ';
+	sotien=sotien+giatong;
+  }
+  tienndd=sotien;
+  document.getElementById('tongtien1').innerHTML=""+sotien+"đ";
+}
+function tangsl(event){
+	var con=event.target;
+	var cha=con.parentElement;
+	var input1=cha.children[1];
+	var value1=input1.value;
+	var value11=parseInt(value1);
+    input1.value=parseInt(value1)+1;
+    var chacha=cha.parentElement.children[1].innerHTML;
+	 var deco2=chacha.match(/\d/g);
+    var deco3=deco2.join("");
+	var deco4=parseInt(deco3);
+	cha.parentElement.children[3].innerHTML=(parseInt(value1)+1)*deco4+'đ';
+     tienndd=tienndd+deco4;
+    document.getElementById('tongtien1').innerHTML=""+tienndd+"đ";
+}
+function giamsl(event){
+	var con=event.target;
+	var cha=con.parentElement;
+	var input1=cha.children[1];
+	var value1=input1.value;
+	if(parseInt(value1)>0)
+    {input1.value=parseInt(value1)-1;
+    var chacha=cha.parentElement.children[1].innerHTML;
+	 var deco2=chacha.match(/\d/g);
+    var deco3=deco2.join("");
+	var deco4=parseInt(deco3);
+	cha.parentElement.children[3].innerHTML=(parseInt(value1)-1)*deco4+'đ';
+     tienndd=tienndd-deco4;
+    document.getElementById('tongtien1').innerHTML=""+tienndd+"đ";
+	}
+}
+function xoa(event){
+	var con=event.target;
+	if(confirm("Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng ?")==true)
+	{con.parentElement.remove();
+	  var sotien=0;
+  var sosp=document.getElementById('sosp');
+  	var spct=sosp.children;
+	var sll=spct.length;
+	document.getElementById('giohang').innerHTML=""+sll;
+  for(let i=0;i<spct.length;i++)
+  {
+    
+    var spct1=spct[i];
+    var gia=spct1.children[1].innerHTML;
+	var sl=spct1.children[2];
+	var sl1=sl.children[1].value;
+	var sl2=parseInt(sl1);
+    var deco2=gia.match(/\d/g);
+    var deco3=deco2.join("");
+	var deco4=parseInt(deco3);
+	var giatong=sl2*deco4;
+	spct1.children[3].innerHTML=giatong+'đ';
+	sotien=sotien+giatong;
+  }
+  tienndd=sotien;
+  document.getElementById('tongtien1').innerHTML=""+sotien+"đ";
+	}
+}
+function dathang(arr){
+	
+	var nameuser=arr[0].value;
+	var diachi=arr[1].value;
+	var email=arr[2].value;
+	var sdt=arr[3].value;
+	if(nameuser==""||diachi==""||email==""||sdt=="")
+	{alert("Vui lòng nhập đầy đủ thông tin ");
+	}
+    else if(email.search(/[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/g)==-1)
+	{
+		alert("email sai định dạng");
+	}
+	else if(sdt.search(/^[0-9]+[0-9]+$/g)==-1)
+	{
+		alert("số điện thoại không được chứa chữ cái");
+	}
+	else if(sdt.length<10)
+	{
+		alert("số điện thoại phải từ 10 ký tự trở lên");
+	}
+	else if(document.getElementById('tongtien1').innerHTML=="0đ")
+	{
+		alert("không có sản phẩm nào được mua vui lòng thêm vào giỏ hàng");
+	}
+    else{
+		alert("Đặt Hàng Thành Công");
+		
+	}
+return;
+}
+function chuyentrang(){
+	location.replace("tranggiohang.html");
+
+}

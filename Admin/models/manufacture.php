@@ -7,6 +7,14 @@ class Manufacture extends Db{
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function getAllManuId($manu_id){
+        $sql = self::$connection->prepare("SELECT * FROM `manufactures` WHERE `manu_id` = ?");
+        $sql->bind_param("i",$manu_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function getAllManuDesc(){
         $sql = self::$connection->prepare("SELECT * FROM manufactures ORDER BY `manu_id` DESC");
         $sql->execute(); //return an object
@@ -24,6 +32,12 @@ class Manufacture extends Db{
     {
         $sql = self::$connection->prepare("DELETE FROM `manufactures` WHERE `manu_id` = ?");
         $sql->bind_param("i", $id);
+        return $sql->execute();
+    }
+    public function editManufactures($manu_name, $manu_id)
+    {
+        $sql = self::$connection->prepare("UPDATE `manufactures` SET `manu_name`= ? WHERE `manu_id` = ?");
+        $sql->bind_param("si", $manu_name, $manu_id);
         return $sql->execute();
     }
 }

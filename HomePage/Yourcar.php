@@ -20,6 +20,7 @@
                 $_SESSION['cart'][$id] = 1;
             }
         endif;
+        $totalPrice = 0;
                 foreach ($getAllProducts as $value):
                     if(isset($_SESSION['cart'][$value['id']])):
         ?>
@@ -27,25 +28,26 @@
             <span class="col-md-2"><img src="../img/<?php echo $value['image'] ?>" alt="" style="width:80px"></span>
             <span class="col-md-4"><?php echo $value['name']?></span>
             <span class="col-md-2"><?php echo $_SESSION['cart'][$value['id']]?></span>
-            <span
-                class="col-md-3"><?php echo number_format($value['price'] * $_SESSION['cart'][$value['id']])?>VND</span>
+            <?php $total = ($value['price'] * $_SESSION['cart'][$value['id']]);?>
+            <span class="col-md-3"><?php echo number_format($total)?>VND</span>
             <span><a href="delete.php?id=<?php echo $value['id']?>">Delete</a></span>
         </div>
         <?php
+        $totalPrice +=$total;
 							endif;
 						endforeach;
                     ?>
     </div>
     <div class="container">
         <div class="row tongtien">
-            <span>Tổng Tiền :</span>
+            <span>Tổng Tiền : <?php echo number_format($totalPrice);?> VNĐ</span>
         </div>
     </div>
+    <br>
     <div class="container">
-        <div class="row thongtin">
-            <input onclick="dathang(mang2)" class="input2" type="button" value="Đặt Hàng" />
-        </div>
+        <center><a class="btn btn-danger btn-sm" href="checkout.php">
+                Đặt hàng
+            </a></center>
     </div>
 </div>
-<hr class="blue" />
 <?php include "footer.php";?>

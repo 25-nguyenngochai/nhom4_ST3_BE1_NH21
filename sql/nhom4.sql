@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 16, 2021 at 07:13 AM
--- Server version: 5.7.31
--- PHP Version: 7.3.21
+-- Máy chủ: 127.0.0.1:3306
+-- Thời gian đã tạo: Th12 05, 2021 lúc 03:05 AM
+-- Phiên bản máy phục vụ: 5.7.31
+-- Phiên bản PHP: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nhom4`
+-- Cơ sở dữ liệu: `nhom4`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manufactures`
+-- Cấu trúc bảng cho bảng `manufactures`
 --
 
 DROP TABLE IF EXISTS `manufactures`;
@@ -32,10 +32,10 @@ CREATE TABLE IF NOT EXISTS `manufactures` (
   `manu_id` int(11) NOT NULL AUTO_INCREMENT,
   `manu_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`manu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `manufactures`
+-- Đang đổ dữ liệu cho bảng `manufactures`
 --
 
 INSERT INTO `manufactures` (`manu_id`, `manu_name`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `manufactures` (`manu_id`, `manu_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 DROP TABLE IF EXISTS `products`;
@@ -63,12 +63,12 @@ CREATE TABLE IF NOT EXISTS `products` (
   `image` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `feature` tinyint(4) NOT NULL,
-  `created_at` timestamp NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `manu_id`, `type_id`, `price`, `image`, `description`, `feature`, `created_at`) VALUES
@@ -136,7 +136,7 @@ INSERT INTO `products` (`id`, `name`, `manu_id`, `type_id`, `price`, `image`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `protypes`
+-- Cấu trúc bảng cho bảng `protypes`
 --
 
 DROP TABLE IF EXISTS `protypes`;
@@ -144,10 +144,10 @@ CREATE TABLE IF NOT EXISTS `protypes` (
   `type_id` int(11) NOT NULL AUTO_INCREMENT,
   `type_name` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `protypes`
+-- Đang đổ dữ liệu cho bảng `protypes`
 --
 
 INSERT INTO `protypes` (`type_id`, `type_name`) VALUES

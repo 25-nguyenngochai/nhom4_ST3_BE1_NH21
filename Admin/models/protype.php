@@ -7,6 +7,14 @@ class Protype extends Db{
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function getAlltypeid($type_id){
+        $sql = self::$connection->prepare("SELECT * FROM protypes WHERE `type_id` = ?");
+        $sql->bind_param("i",$type_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function getAllManuTypeDesc(){
         $sql = self::$connection->prepare("SELECT * FROM protypes ORDER BY `type_id` DESC");
         $sql->execute(); //return an object
@@ -24,6 +32,12 @@ class Protype extends Db{
     {
         $sql = self::$connection->prepare("DELETE FROM `protypes` WHERE `type_id` = ?");
         $sql->bind_param("i", $id);
+        return $sql->execute();
+    }
+    public function editProtypes($type_name, $type_id)
+    {
+        $sql = self::$connection->prepare("UPDATE `protypes` SET `type_name`= ? WHERE `type_id` = ?");
+        $sql->bind_param("si", $type_name, $type_id);
         return $sql->execute();
     }
 }

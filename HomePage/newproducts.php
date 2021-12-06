@@ -271,7 +271,9 @@ include "header.php";
                             </div>
                             <div class="product-body">
                                 <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></h3>
+                                <h3 class="product-name"><a
+                                        href="details.php?id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a>
+                                </h3>
                                 <h4 class="product-price"><?php echo number_format($value['price']) ?></h4>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
@@ -290,7 +292,8 @@ include "header.php";
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <a class="primary-btn cta-btn" href="Yourcar.php?youcar=<?php echo $value['id']?>"><i
+                                        class="fa fa-shopping-cart"></i> add to cart</a>
                             </div>
                         </div>
                     </div>
