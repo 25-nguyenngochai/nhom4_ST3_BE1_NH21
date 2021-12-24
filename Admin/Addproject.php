@@ -65,10 +65,6 @@
                                 <input type="number" id="price" class="form-control" name="price" required>
                             </div>
                             <div class="form-group">
-                                <label for="inputName">Image</label>
-                                <input type="file" id="image" class="form-control" name="image" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="inputDescription">Description</label>
                                 <textarea id="description" class="form-control" rows="4" name="description"
                                     required></textarea>
@@ -80,6 +76,22 @@
                                     <option>1</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="inputImage">Image</label>
+                                <input type="file" id="inputImage" class="form-control" name="image" required>
+                                <br>
+                                <img id="hinh" alt="" style="width:100px">
+                            </div>
+                            <script>
+                            const inputPro_image = document.querySelector('#inputImage');
+                            const hinh = document.querySelector('#hinh');
+                            inputImage.onchange = evt => {
+                                const [file] = inputImage.files
+                                if (file) {
+                                    hinh.src = URL.createObjectURL(file)
+                                }
+                            }
+                            </script>
                         </div>
                         <!-- /.card-body -->
                     </div>

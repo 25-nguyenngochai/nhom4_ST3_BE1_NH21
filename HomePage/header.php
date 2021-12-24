@@ -5,6 +5,8 @@ include "models/db.php";
 include "models/product.php";
 include "models/manufacture.php";
 include "models/protype.php";
+include "models/User.php";
+$User = new User;
 $product = new Product;
 $getAllProducts = $product -> getAllProducts();
 $getNewsProducts = $product -> getNewsProducts();
@@ -49,7 +51,7 @@ $getAllManuType = $Protype -> getAllManuType();
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <link href="css/trangbanhang.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,11 +70,19 @@ $getAllManuType = $Protype -> getAllManuType();
                 <ul class="header-links pull-left">
                     <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
                     <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                    <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                    <li><a href="Map.php"><i class="fa fa-map-marker"></i>Võ Văn Ngân, Linh Chiểu, Thủ Đức</a></li>
                 </ul>
                 <ul class="header-links pull-right">
                     <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                    <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    <?php
+                    if(isset($_SESSION['user'])):
+                    $getAllUser = $User -> getAllUser($_SESSION['user'])?>
+                    <li><a href="#"><i class="fa fa-user-o"></i>Xin chào <?php echo $getAllUser[0]['Name'];?></a></li>
+                    <li><a href="../Login/logoutUser.php"><i class="fa fa-user-o"></i>Logout</a></li>
+                    <?php  endif;
+                    if (!isset($_SESSION['user'])):?>
+                    <li><a href="../Login/dangkydangnhap.php"><i class="fa fa-user-o"></i> My Account</a></li>
+                    <?php endif;?>
                 </ul>
             </div>
         </div>
@@ -88,7 +98,7 @@ $getAllManuType = $Protype -> getAllManuType();
                     <div class="col-md-3">
                         <div class="header-logo">
                             <a href="#" class="logo">
-                                <img src="./img/logo.png" alt="">
+                                <img src="../img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -112,22 +122,82 @@ $getAllManuType = $Protype -> getAllManuType();
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
                             <!-- Wishlist -->
-                            <div>
-                                <a href="#">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-heart-o"></i>
                                     <span>Your Wishlist</span>
-                                    <div class="qty">2</div>
+                                    <?php
+									//thanh toán
+									$listCart = (isset($_SESSION['cart1'])) ? $_SESSION['cart1'] : [];
+									// var_dump($listCart);
+									$listCart = (isset($listCart)) ? $listCart : 0;
+									//echo count($listCart);
+									if ($listCart != 0) :
+									?>
+                                    <div class="qty">
+                                        <?php
+											echo ($listCart == 0) ? 0 : count($listCart) ?>
+                                    </div>
+                                    <?php endif ?>
+                                </a>
+                                <div class="cart-dropdown">
+                                    <span style="font-weight: bold">Sản phẩm yêu thích</span>
+                                    <hr>
+                                    <div class="cart-list">
+                                        <?php
+
+										$totalPrice = 0;
+
+										if ($listCart != 0) :
+											foreach ($listCart as $key => $cart) :
+												$cartItem = $product->getProductById($key);
+												//var_dump($cart);
+										?>
+                                        <div class="product-widget">
+                                            <div class="product-img">
+                                                <img src="../img/<?php echo $cartItem[0]['image'] ?>" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <h3 class="product-name"><a
+                                                        href="details.php?id=<?php echo $cartItem[0]['id']?>"><?php echo $cartItem[0]['name'] ?></a>
+                                                </h3>
+                                                <h4 class="product-price"><span
+                                                        class="qty"><?php echo $cart['quantity'] ?>x</span><?php echo number_format($cart['quantity'] * $cartItem[0]['price']) ?>
+                                                    VNĐ</h4>
+                                            </div>
+                                            <a href="delYourWishlist.php?id=<?php echo $key ?>" class="delete"><i
+                                                    class="fa fa-close"></i></a>
+                                        </div>
+
+                                        <?php
+												$totalPrice += ($cartItem[0]['price'] * $cart['quantity']);
+											endforeach;
+										else :
+											?>
+                                        <?php endif ?>
+                                    </div>
+                                </div>
                                 </a>
                             </div>
                             <!-- /Wishlist -->
 
                             <!-- Cart -->
+                            <?php if(isset($_SESSION['user'])):?>
                             <div class="dropdown">
                                 <a href="Yourcar.php">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Your Cart</span>
                                 </a>
                             </div>
+                            <?php endif;?>
+                            <?php if(!isset($_SESSION['user'])):?>
+                            <div class="dropdown">
+                                <a href="../Login/dangkydangnhap.php">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Your Cart</span>
+                                </a>
+                            </div>
+                            <?php endif;?>
                             <!-- /Cart -->
 
                             <!-- Menu Toogle -->

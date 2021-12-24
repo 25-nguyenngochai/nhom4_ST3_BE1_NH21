@@ -55,7 +55,8 @@
                                     <?php $getAllManu = $Manufacture -> getAllManu();
                                 foreach($getAllManu as $values):?>
                                     <option <?php if ($values['manu_id'] == $value['manu_id']) echo "selected" ?>
-                                        value="<?php echo $values['manu_id']?>"><?php echo $values['manu_name'] ?></option>
+                                        value="<?php echo $values['manu_id']?>"><?php echo $values['manu_name'] ?>
+                                    </option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
@@ -64,19 +65,33 @@
                                 <select id="type_id" class="form-control custom-select" name="type_id">
                                     <?php  $getAllManuType = $Protype ->getAllManuType();
                                 foreach($getAllManuType as $values):?>
-                                    <option <?php if ($values['type_id'] == $value['type_id']) echo "selected" ?> value="<?php echo $values['type_id']?>"><?php echo $values['type_name'] ?></option>
+                                    <option <?php if ($values['type_id'] == $value['type_id']) echo "selected" ?>
+                                        value="<?php echo $values['type_id']?>"><?php echo $values['type_name'] ?>
+                                    </option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Price</label>
-                                <input value="<?php echo $value['price'];?>" name="price" required type="number" id="Price"
-                                    class="form-control">
+                                <input value="<?php echo $value['price'];?>" name="price" required type="number"
+                                    id="Price" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputName">Image</label>
-                                <input type="file" id="image" class="form-control" name="image">
+                                <label for="inputImage">Image</label>
+                                <input type="file" id="inputImage" class="form-control" name="image">
+                                <br>
+                                <img id="hinh" src="../img/<?php echo $value['image'] ?>" alt="" style="width:100px">
                             </div>
+                            <script>
+                            const inputPro_image = document.querySelector('#inputImage');
+                            const hinh = document.querySelector('#hinh');
+                            inputImage.onchange = evt => {
+                                const [file] = inputImage.files
+                                if (file) {
+                                    hinh.src = URL.createObjectURL(file)
+                                }
+                            }
+                            </script>
                             <div class="form-group">
                                 <label for="inputDescription">Description</label>
                                 <textarea required name="description" id="Description" class="form-control"
@@ -149,15 +164,15 @@
                             </div>
                         </div>
                         <div class="card-body">
-                        <div class="form-group">
+                            <div class="form-group">
                                 <label for="inputName">Type Id</label>
                                 <input value="<?php echo $value['type_id'];?>" type="text" id="id" readonly name="id"
                                     class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Type Name</label>
-                                <input value="<?php echo $value['type_name'];?>" type="text" required id="name" name="name"
-                                    class="form-control">
+                                <input value="<?php echo $value['type_name'];?>" type="text" required id="name"
+                                    name="name" class="form-control">
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -220,15 +235,15 @@
                             </div>
                         </div>
                         <div class="card-body">
-                        <div class="form-group">
+                            <div class="form-group">
                                 <label for="inputName">Manu Id</label>
                                 <input value="<?php echo $value['manu_id'];?>" name="id" readonly type="text" id="id"
                                     class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Manu Name</label>
-                                <input value="<?php echo $value['manu_name'];?>" name="name" required type="text" id="Name"
-                                    class="form-control">
+                                <input value="<?php echo $value['manu_name'];?>" name="name" required type="text"
+                                    id="Name" class="form-control">
                             </div>
                         </div>
                         <!-- /.card-body -->

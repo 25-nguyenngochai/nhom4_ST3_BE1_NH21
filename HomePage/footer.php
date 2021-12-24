@@ -9,7 +9,8 @@
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
                         <h3 class="footer-title">About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut.</p>
                         <ul class="footer-links">
                             <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
                             <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
@@ -23,8 +24,9 @@
                         <h3 class="footer-title">Categories</h3>
                         <ul class="footer-links">
                             <?php foreach ($getAllManuType as $value):?>
-							<li><a href="products.php?type_id=<?php echo $value['type_id']?>"> <?php echo $value['type_name']?>  </a></li>
-						    <?php endforeach;?>
+                            <li><a href="products.php?type_id=<?php echo $value['type_id']?>">
+                                    <?php echo $value['type_name']?> </a></li>
+                            <?php endforeach;?>
                         </ul>
                     </div>
                 </div>
@@ -62,7 +64,6 @@
         <!-- /container -->
     </div>
     <!-- /top footer -->
-
     <!-- bottom footer -->
     <div id="bottom-footer" class="section">
         <div class="container">
@@ -79,12 +80,15 @@
                     </ul>
                     <span class="copyright">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>
+                        document.write(new Date().getFullYear());
+                        </script> All rights reserved | This template is made with <i class="fa fa-heart-o"
+                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </span>
                 </div>
             </div>
-                <!-- /row -->
+            <!-- /row -->
         </div>
         <!-- /container -->
     </div>
@@ -99,6 +103,8 @@
 <script src="js/nouislider.min.js"></script>
 <script src="js/jquery.zoom.min.js"></script>
 <script src="js/main.js"></script>
-<script  src="js/slide.js"></script>
+<script src="js/slides.js"></script>
+<!-- End Google Map -->
 </body>
+
 </html>

@@ -4,6 +4,8 @@ include "models/db.php";
 include "models/product.php";
 include "models/protype.php";
 include "models/manufacture.php";
+include "models/User.php";
+$User = new User;
 $Product = new Product;
 $Protype = new Protype;
 $Manufacture = new Manufacture;
@@ -37,6 +39,7 @@ $Manufacture = new Manufacture;
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="dist/css/custom.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -176,11 +179,10 @@ $Manufacture = new Manufacture;
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="../Login/logout.php" class="nav-link">Logout</a>
                 </li>
+
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -199,7 +201,8 @@ $Manufacture = new Manufacture;
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../img/z2792906061021_c92f206993b679292b8437c73341b98f.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../img/z2792906061021_c92f206993b679292b8437c73341b98f.jpg"
+                            class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">NHOM4_ST3_BE1_NH21</a>
@@ -208,15 +211,15 @@ $Manufacture = new Manufacture;
 
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
+                    <form method="get" action="Search.php">
+                        <div class="input-group" data-widget="sidebar-search">
+                            <input class="form-control form-control-sidebar" name="keyword" type="search"
+                                placeholder="Search" aria-label="Search">
+                            <button type="submit" class="btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 <!-- Sidebar Menu -->

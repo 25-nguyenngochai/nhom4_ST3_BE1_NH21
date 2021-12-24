@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin'])){
+    header('location:../Login/index.php');
+}
 class Db
 {
         public static $connection;

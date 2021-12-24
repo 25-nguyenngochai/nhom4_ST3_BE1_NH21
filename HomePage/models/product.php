@@ -26,16 +26,6 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function getProductSearch($keyword)
-    {
-        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ?");
-        $keyword = "%$keyword%";
-        $sql->bind_param("s", $keyword);
-        $sql->execute(); //return an object
-        $items = array();
-        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $items; //return an array
-    }
     public function getProductByTypeId($type_id)
     {
         $sql = self::$connection->prepare("SELECT * FROM products WHERE `type_id` = ?");
@@ -217,4 +207,43 @@ class Product extends Db
          $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
          return $items; //return an array
      }
+     public function getrelatedproducts()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `manu_id` and `type_id`");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getAllManuTypes($type, $manu)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `products` WHERE `manu_id` = ? AND `type_id` = ?");
+        $sql->bind_param("ii",$type, $manu);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getProductSearchPT($keyword, $page, $perPage)
+    {
+        // Tính số thứ tự trang bắt đầu
+        $firstLink = ($page - 1) * $perPage;
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ? ORDER BY id LIMIT ?, ?");
+        $keyword = "%$keyword%";
+        $sql->bind_param("sii", $keyword, $firstLink, $perPage);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getProductSearch($keyword)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ?");
+        $keyword = "%$keyword%";
+        $sql->bind_param("s", $keyword);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
 }

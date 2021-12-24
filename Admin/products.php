@@ -78,7 +78,7 @@
                                     </i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="delProducts.php?id=<?php echo $value['id'];?>">
+                                <a id="delete" class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
@@ -87,6 +87,18 @@
                         </tr>
                         <?php endforeach;?>
                     </tbody>
+                    <script>
+                    const del = document.querySelectorAll('#delete');
+                    del.forEach((item) => {
+                        item.onclick = () => {
+                            if (item.getAttribute("href") == "#") {
+                                alert("Xóa Products id <?php echo $getAllProducts[0]['id'];?> thành công!");
+                                item.setAttribute("href",
+                                    "delProducts.php?id=<?php echo $getAllProducts[0]['id'];?>")
+                            }
+                        }
+                    })
+                    </script>
                 </table>
             </div>
             <!-- /.card-body -->

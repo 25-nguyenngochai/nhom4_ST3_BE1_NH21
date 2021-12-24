@@ -221,17 +221,22 @@ include "header.php";
                                     <i class="fa fa-star"></i>
                                 </div>
                                 <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                            class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
-                                            class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
-                                            view</span></button>
+                                    <button onclick="location.href='YourWishlist.php?id=<?php echo $value['id'] ?>';"
+                                        class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add
+                                            to wishlist</span></button>
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <a class="primary-btn cta-btn" href="Yourcar.php?youcar=<?php echo $value['id']?>"><i
-                                        class="fa fa-shopping-cart"></i> add to cart</a>
+                                <?php if(!isset($_SESSION['user'])):?>
+                                <button onclick="location.href='../Login/dangkydangnhap.php';"
+                                    class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                    cart</button>
+                                <?php endif;?>
+                                <?php if(isset($_SESSION['user'])):?>
+                                <button onclick="location.href='Yourcar.php?youcar=<?php echo $value['id']?>';"
+                                    class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                    cart</button>
+                                <?php endif;?>
                             </div>
                         </div>
                     </div>
@@ -305,17 +310,22 @@ include "header.php";
                                     <i class="fa fa-star"></i>
                                 </div>
                                 <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                            class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
-                                            class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
-                                            view</span></button>
+                                    <button onclick="location.href='YourWishlist.php?id=<?php echo $value['id'] ?>';"
+                                        class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add
+                                            to wishlist</span></button>
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <a class="primary-btn cta-btn" href="Yourcar.php?youcar=<?php echo $value['id']?>"><i
-                                        class="fa fa-shopping-cart"></i> add to cart</a>
+                                <?php if(!isset($_SESSION['user'])):?>
+                                <button onclick="location.href='../Login/dangkydangnhap.php';"
+                                    class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                    cart</button>
+                                <?php endif;?>
+                                <?php if(isset($_SESSION['user'])):?>
+                                <button onclick="location.href='Yourcar.php?youcar=<?php echo $value['id']?>';"
+                                    class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                    cart</button>
+                                <?php endif;?>
                             </div>
                         </div>
                     </div>

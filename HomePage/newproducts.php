@@ -168,44 +168,6 @@ include "header.php";
                     </div>
                 </div>
                 <!-- /aside Widget -->
-
-                <!-- aside Widget -->
-                <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product01.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product02.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-                </div>
-                <!-- /aside Widget -->
             </div>
             <!-- /ASIDE -->
 
@@ -283,17 +245,22 @@ include "header.php";
                                     <i class="fa fa-star"></i>
                                 </div>
                                 <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
-                                            class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span
-                                            class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick
-                                            view</span></button>
+                                    <button onclick="location.href='YourWishlist.php?id=<?php echo $value['id'] ?>';"
+                                        class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add
+                                            to wishlist</span></button>
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <a class="primary-btn cta-btn" href="Yourcar.php?youcar=<?php echo $value['id']?>"><i
-                                        class="fa fa-shopping-cart"></i> add to cart</a>
+                                <?php if(!isset($_SESSION['user'])):?>
+                                <button onclick="location.href='../Login/dangkydangnhap.php';"
+                                    class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                    cart</button>
+                                <?php endif;?>
+                                <?php if(isset($_SESSION['user'])):?>
+                                <button onclick="location.href='Yourcar.php?youcar=<?php echo $value['id']?>';"
+                                    class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                                    cart</button>
+                                <?php endif;?>
                             </div>
                         </div>
                     </div>

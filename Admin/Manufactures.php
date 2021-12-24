@@ -59,20 +59,48 @@
                             <td><?php echo $value['manu_id'];?></td>
                             <td><a><?php echo $value['manu_name'];?></a></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="Editproject.php?manu_id=<?php echo $value['manu_id'];?>">
+                                <a class="btn btn-info btn-sm"
+                                    href="Editproject.php?manu_id=<?php echo $value['manu_id'];?>">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="delManufacture.php?id=<?php echo $value['manu_id'];?>">
+                                <?php
+                                if ($Manufacture->checkCanDelete($value['manu_id'])) { ?>
+                                <a id="delete" class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
                                 </a>
+                                <?php
+                                } else {
+                                ?>
+                                <a id="delete" class="btn btn-danger btn-sm" href="">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+                                <?php
+                                }
+                                ?>
                             </td>
                         </tr>
                         <?php endforeach;?>
                     </tbody>
+                    <script>
+                    const del = document.querySelectorAll('#delete');
+                    del.forEach((item) => {
+                        item.onclick = () => {
+                            if (item.getAttribute("href") == "#") {
+                                alert("Xóa Manufacture id <?php echo $getAllManuDesc[0]['manu_id'];?> thành công!");
+                                item.setAttribute("href",
+                                    "delManufacture.php?id=<?php echo $getAllManuDesc[0]['manu_id'];?>")
+                            } else {
+                                alert("Còn dữ liệu bên Products xóa Manufacture id <?php echo $getAllManuDesc[0]['manu_id'];?> thất bại!");
+                            }
+                        }
+                    })
+                    </script>
                 </table>
             </div>
             <!-- /.card-body -->

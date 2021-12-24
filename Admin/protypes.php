@@ -59,20 +59,49 @@
                             <td><?php echo $value['type_id'];?></td>
                             <td><a><?php echo $value['type_name'];?></a></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="Editproject.php?type_id=<?php echo $value['type_id'];?>">
+                                <a class="btn btn-info btn-sm"
+                                    href="Editproject.php?type_id=<?php echo $value['type_id'];?>">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
                                 </a>
-                                <a class="btn btn-danger btn-sm" href="delProtypes.php?id=<?php echo $value['type_id'];?>">
+                                <?php
+                                if ($Protype->checkCanDelete($value['type_id'])) { ?>
+                                <a id="delete" class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
                                 </a>
+                                <?php
+                                } else {
+                                ?>
+                                <a id="delete" class="btn btn-danger btn-sm" href="">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+                                <?php
+                                }
+                                ?>
                             </td>
                         </tr>
                         <?php endforeach;?>
                     </tbody>
+                    <script>
+                    const del = document.querySelectorAll('#delete');
+                    del.forEach((item) => {
+                        item.onclick = () => {
+                            if (item.getAttribute("href") == "#") {
+                                alert("Xóa Protypes id <?php echo $getAllManuTypeDesc[0]['type_id'];?> thành công!");
+                                item.setAttribute("href",
+                                    "delProtypes.php?id=<?php echo $getAllManuTypeDesc[0]['type_id'];?>"
+                                )
+                            } else {
+                                alert("Còn dữ liệu bên Products xóa Protypes id <?php echo $getAllManuTypeDesc[0]['type_id'];?> thất bại!");
+                            }
+                        }
+                    })
+                    </script>
                 </table>
             </div>
             <!-- /.card-body -->

@@ -69,19 +69,19 @@
                         <a href="Addproject.php?addmanufactures" class="small-box-footer">Add Manufactures<i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                 <!-- ./col -->
+                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-danger">
+                    <?php $getAllUser = $User ->getAllUser();?>
                         <div class="inner">
-                            <h3>65</h3>
-
-                            <p>Unique Visitors</p>
+                            <h3><?php echo count($getAllUser);?></h3>
+                            <p>User</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="User.php" class="small-box-footer">watch information <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
